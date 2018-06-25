@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="validation text-center">
+ 	<h1>Validation</h1>
+ 	<p>Here, you will validate the photos to be shown in the gallery section.</p><br>
+ 	<div>
+ 		{% for pa in imgsrc %}
+ 			<form action='' method='POST'>
+	 			<img src="{{ pa['local'] }}" class="img-thumbnail img-responsive" alt="">
+	 			<button type="submit" class="btn btn-primary">Approve</button><br>
+	 		</form>
+ 		{% endfor %}
+ </div>
+</div>
+{% endblock %}

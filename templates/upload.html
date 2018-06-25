@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="upload form-group">
+    <h1>Upload</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="user_file">Upload Your File</label>
+        <br></br>
+        <input type="file" name="user_file" class="form-control-file" id="user_file" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">São aceitos apenas arquivos com extensão '.png', '.jpg' e '.jpeg'</small>
+        <br></br>
+        <button type="submit" class ="btn btn-primary">Upload</button>
+    </form>
+  </div>
+{% endblock %}
