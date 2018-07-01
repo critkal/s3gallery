@@ -14,7 +14,8 @@ login_manager.init_app(app)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-users = {'gabriel@email.com': {'password': '123'}}
+users = {'gabriel@email.com': {'password': '123'},
+        'email@email.com': {'password': '321'}}
 
 class User(flask_login.UserMixin):
     pass
@@ -52,7 +53,9 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('home.html')
+    #load public gallery
+    approved = mongo_list_approved()
+    return render_template('home.html', imgs = approved)
 
 @app.route('/upload', methods=['POST'])
 @flask_login.login_required

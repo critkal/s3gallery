@@ -3,5 +3,10 @@
 	<div class="home text-center">
 		<h1>Home</h1>
 		<p>Welcome to the generic gallery app.</p>
+		{% for pa in imgs %}
+ 			<form action='' method='POST'>
+	 			<img src="{{ pa['local'] }}" class="img-thumbnail img-responsive" alt="">
+	 		</form>
+ 		{% endfor %}
 	</div>
 {% endblock %}

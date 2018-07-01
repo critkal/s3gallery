@@ -38,7 +38,7 @@ def mongo_insert(photo):
     return render_template('uploadsuccess.html')
 
 def mongo_connect():
-    client = MongoClient('mongodb+srv://galleryuser:123@gallerycluster-wrtmw.mongodb.net/test?retryWrites=true')
+    client = MongoClient('mongodb://galleryuser:123@gallerycluster-shard-00-00-wrtmw.mongodb.net:27017,gallerycluster-shard-00-01-wrtmw.mongodb.net:27017,gallerycluster-shard-00-02-wrtmw.mongodb.net:27017/test?ssl=true&replicaSet=GalleryCluster-shard-0&authSource=admin&retryWrites=true')
     db = client['gallerydb']
     collection = db['gallery']
     return collection
@@ -47,6 +47,11 @@ def mongo_list_unvalid():
     connection = mongo_connect()
     pending_approval = connection.find({"valid" : False})
     return pending_approval
+
+def mongo_list_approved():
+    connection = mongo_connect()
+    approved = connection.find({"valid" : True})
+    return approved
 
 def mongo_validate(o_id):
     connection = mongo_connect()
